@@ -13,6 +13,6 @@ trait TableWithId { self: Profile =>
   implicit class HasIdQueryExt[Id: BaseColumnType, U]
   (query: TableQuery[_ <: Table[U] with HasId[Id]]) {
     def filterById(id: Id)(implicit s: Session) = query.filter(_.id === id)
-    def insertReturnId(m: U)(implicit s: Session) = query.returning(query.map(_.id)) += m
+    def insertReturnId(m: U)(implicit s: Session): Id = query.returning(query.map(_.id)) += m
   }
 }

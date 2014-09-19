@@ -12,8 +12,6 @@ class WithIdSpec extends FlatSpec with Matchers with Profile with TableWithId {
 
   lazy val db = Database.forURL("jdbc:h2:mem:test", "", "", null, "org.h2.Driver")
 
-  import implicits._
-
   class M(tag: Tag) extends Table[(Int, String)](tag, "m") with HasId[Int] {
     def id = column[Int]("id", O.AutoInc, O.PrimaryKey)
     def name = column[String]("name")
@@ -34,6 +32,7 @@ class WithIdSpec extends FlatSpec with Matchers with Profile with TableWithId {
 
   "table with id" should "support filterById" in withSession { implicit s =>
     val f = query.filterById(1).firstOption
+
     f should be (None)
   }
 }
