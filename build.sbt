@@ -10,5 +10,6 @@ libraryDependencies ++= Seq(
   "joda-time" % "joda-time" % "2.3",
   "com.github.tototoshi" %% "slick-joda-mapper" % "1.1.0",
   "org.scalatest" %% "scalatest" % "2.2.0" % "test",
-  "com.h2database" % "h2" % "1.4.181" % "test"
+  "com.h2database" % "h2" % "1.4.181" % "test",
+  "org.scalaz" %% "scalaz-core" % "7.1.0"
 )
